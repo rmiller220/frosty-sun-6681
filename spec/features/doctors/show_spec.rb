@@ -60,13 +60,23 @@ RSpec.describe 'As a visitor' do
     it 'I see a button to remove that patient from that doctors caseload' do
       visit doctor_path(@doctor1)
 
-      expect(page).to have_link("Remove Patient #{@patient1.id}")
-      expect(page).to have_link("Remove Patient #{@patient2.id}")
+      within "#patients-#{@patient1.id}" do
+        expect(page).to have_link("Remove Patient #{@patient1.id}")
+      end
+
+      within "#patients-#{@patient2.id}" do
+        expect(page).to have_link("Remove Patient #{@patient2.id}")
+      end
 
       visit doctor_path(@doctor2)
 
-      expect(page).to have_link("Remove Patient #{@patient3.id}")
-      expect(page).to_not have_link("Remove Patient #{@patient4.id}}")
+      within "#patients-#{@patient3.id}" do
+        expect(page).to have_link("Remove Patient #{@patient3.id}")
+      end
+      
+      within "#patients-#{@patient4.id}" do
+        expect(page).to have_link("Remove Patient #{@patient4.id}")
+      end
     end
 
     it 'When I click that button for one patient I am brought back to the 
