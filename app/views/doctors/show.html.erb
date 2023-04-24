@@ -11,6 +11,7 @@
 <ul>
   <% @doctor.patients.each do |patient| %>
     <li><%= patient.name %></li>
+    <li><%= link_to "Remove Patient #{patient.id}", doctor_patient_path(@doctor, patient), method: :delete %></li><br>
   <% end %>
 
 

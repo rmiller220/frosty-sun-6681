@@ -1,2 +1,3 @@
 class PatientDoctorsController < ApplicationController
+
 end
