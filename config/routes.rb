@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get '/patients', to: 'patients#index'
   # resources :patients
   resources :doctors do
     resources :patients

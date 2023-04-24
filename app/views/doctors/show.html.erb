@@ -10,8 +10,10 @@
 <h4>Patients:</h4>
 <ul>
   <% @doctor.patients.each do |patient| %>
+<div id="patients-<%=patient.id%>">
     <li><%= patient.name %></li>
     <li><%= link_to "Remove Patient #{patient.id}", doctor_patient_path(@doctor, patient), method: :delete %></li><br>
+  </div>
   <% end %>
 
 
